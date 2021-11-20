@@ -53,7 +53,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/php:7.3-node-browsers
-    staps:
+    steps:
       - add_ssh_keys
       - run:
           name: deploy
@@ -71,10 +71,4 @@ workflows:
   build_deploy:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
+      - deploy
